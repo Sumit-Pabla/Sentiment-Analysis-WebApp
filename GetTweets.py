@@ -70,7 +70,7 @@ def my_form_post():
     # Saving data visualizations
     ut.generateHistogram(tweets_df, text_query)
     ut.generatePieGraph(cleaned_tweets_df['NB-Sentiment Score'], text_query)
-    #ut.sentiment_vs_time(text_query, avgScore)
+    ut.sentiment_vs_time(text_query, avgScore)
 
     mostPos = ut.findPos(tweets_df)
     mostNeg = ut.findNeg(tweets_df)
