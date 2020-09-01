@@ -6,9 +6,6 @@ import TweetCleaning as tc
 import numpy as np
 
 
-import time
-
-
 app = Flask(__name__)
 
 @app.route('/')

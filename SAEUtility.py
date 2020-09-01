@@ -5,11 +5,8 @@ import SAEngine as sae
 import TweetCleaning as tc
 from datetime import date, timedelta
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS
 import nltk as nltk
-from nltk.corpus import stopwords
 nltk.download('stopwords')
-from nltk.tokenize import word_tokenize
 
 
 def assembleDataframe(tweets):
@@ -25,13 +22,13 @@ def assembleDataframe(tweets):
 
     return tweets_df
 
-#takes in a column and then sums it up X = df.ColumnName | X = df['ColumnName']
+    #   takes in a column and then sums it up X = df.ColumnName | X = df['ColumnName']
 def getAvgScore(X): #pass in column name (Score)
     x = X[X != 0]
     if(len(x)>0):
         return x.to_numpy().sum() / len(x)
     else:
-        return -1;
+        return -1
 
 
 def sortByColumn(df, t):
@@ -39,14 +36,14 @@ def sortByColumn(df, t):
 
 
 def findPos(tweets_df):
-    pos = sortByColumn(tweets_df, ['NB-Sentiment Score']);
+    pos = sortByColumn(tweets_df, ['NB-Sentiment Score'])
     mostPos = pos.iloc[0:1]
     print(mostPos[['Text', 'Favorites', 'Engagements']])
 
     return mostPos
 
 def findNeg(tweets_df):
-    pos = sortByColumn(tweets_df, ['NB-Sentiment Score']);
+    pos = sortByColumn(tweets_df, ['NB-Sentiment Score'])
     mostNeg = pos.iloc[99:100]
     print(mostNeg[['Text', 'Favorites', 'Engagements']])
     return mostNeg
@@ -54,7 +51,7 @@ def findNeg(tweets_df):
 
 
 def findTopThreeTweets(tweets_df):
-    topThree = sortByColumn(tweets_df, ['Engagements']);
+    topThree = sortByColumn(tweets_df, ['Engagements'])
     #print(topThree.iloc[0:3])
     #print(topThree[['Text', 'Favorites', 'Engagements']])
     return topThree.iloc[0:3]
@@ -101,7 +98,6 @@ def generatePieGraph(dfc, text_query):
     plt.close()
 
 def sentiment_vs_time(text_query, avgScore):
-    plt.pyplot.switch_backend('Agg')
     today = date.today()
     thirtyDaysPast = today - timedelta(30)
     sixtyDaysPast = today - timedelta(60)

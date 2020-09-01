@@ -3,16 +3,15 @@ import random as rand
 from textblob import TextBlob
 import NaiveBayesTrainer as nbtrainer
 
-#for testing
+#   for testing
 def random_scores(tweets):
-    return np.array([rand.randint(1, 100) for tweet in tweets]);
+    return np.array([rand.randint(1, 100) for tweet in tweets])
 
-#---------------------
 
 def sentimentloop(cleaned_tweets):
     score_column = np.empty([100, 1])
     count = 0
-    #for x in cleaned_tweets:
+    #   for x in cleaned_tweets:
     #    score_column[count] = (TextBlob(str(cleaned_tweets['Text'])).sentiment.polarity)
     #    count = count + 1;
     for index, row in cleaned_tweets.iterrows():
@@ -28,8 +27,8 @@ def analyze_tweets(cleaned_tweets):
     while count != size:
         cleaned_tweets['Polarity'][count] = TextBlob(str(cleaned_tweets['Text'][count])).sentiment.polarity
         cleaned_tweets['Subjectivity'][count] = TextBlob(str(cleaned_tweets['Text'][count])).sentiment.subjectivity
-        count = count + 1;
-    return 0;
+        count = count + 1
+    return 0
 
 
 def score_by_naive_bayes(cleaned_tweets):
@@ -45,6 +44,6 @@ def score_by_naive_bayes(cleaned_tweets):
         cleaned_tweets['NB-Positive Probability'][count] = dist.prob("Positive")
         cleaned_tweets['NB-Negative Probability'][count] = dist.prob("Negative")
         cleaned_tweets['NB-Sentiment Score'][count] =      dist.prob("Positive") - dist.prob("Negative")
-        count = count + 1;
-    return 0;
+        count = count + 1
+    return 0
 
