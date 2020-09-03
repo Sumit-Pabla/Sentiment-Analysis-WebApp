@@ -1,5 +1,3 @@
-import pandas as pd
-from nltk.corpus import stopwords
 #apply tokenizer
 from nltk.tokenize import RegexpTokenizer
 

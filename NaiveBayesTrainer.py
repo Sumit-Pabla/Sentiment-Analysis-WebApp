@@ -1,12 +1,10 @@
-import nltk.data
 import pandas as pd
-import numpy as np
 import os as os
 
 from textblob.classifiers import NaiveBayesClassifier
 
-def train():
 
+def train():
     path = os.path.dirname(os.path.realpath(__file__))
     os.chdir(path)
 
@@ -16,4 +14,3 @@ def train():
     training_set_from_csv = [tuple(x) for x in subset.to_numpy()]
 
     return NaiveBayesClassifier(training_set_from_csv)
-

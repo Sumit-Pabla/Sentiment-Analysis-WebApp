@@ -3,9 +3,10 @@ import random as rand
 from textblob import TextBlob
 import NaiveBayesTrainer as nbtrainer
 
+
 #   for testing
-def random_scores(tweets):
-    return np.array([rand.randint(1, 100) for tweet in tweets])
+#def random_scores(tweets):
+#    return np.array([rand.randint(1, 100) for tweet in tweets])
 
 
 def sentimentloop(cleaned_tweets):
@@ -43,7 +44,6 @@ def score_by_naive_bayes(cleaned_tweets):
         dist = cl.prob_classify(str(cleaned_tweets['Text'][count]))
         cleaned_tweets['NB-Positive Probability'][count] = dist.prob("Positive")
         cleaned_tweets['NB-Negative Probability'][count] = dist.prob("Negative")
-        cleaned_tweets['NB-Sentiment Score'][count] =      dist.prob("Positive") - dist.prob("Negative")
+        cleaned_tweets['NB-Sentiment Score'][count] = dist.prob("Positive") - dist.prob("Negative")
         count = count + 1
     return 0
-
